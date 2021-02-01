@@ -97,8 +97,9 @@ void logowanie()
 								cout<<"Enter your password:  "<<endl;
 								else 
 									{ 
-										cout<<"Wrong login"; 
+										cout<<"Wrong login"<<endl;
 										system("pause");
+										exit(123);
 									}
 				
 				
@@ -110,18 +111,22 @@ void logowanie()
 								}
 								else 
 									{ 
-										cout<<"Wrong password!"; 
+										cout<<"Wrong password!"<<endl;
+										system("pause");
 										exit(123); 
 									}
 				
-								plik.close();
-							}			
-					}
-					else
+								
+							}	
+							else
 						{
 							cout<<"Wrong ID!"<<endl;
+							system("pause");
 							exit(123);
-		    			}   
+		    			} 
+							plik.close();  		
+					}
+					
 		}
 			
             
