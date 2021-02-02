@@ -17,6 +17,7 @@ bool isnumber( const std::string & v ) {
 
 void rejestracja()
 {
+			system("cls");
 			// otwieranie kliku liczbakont
 			int a;
 	 		fstream liczbakont;
@@ -46,21 +47,29 @@ void rejestracja()
             cin>>login;
             plik<<login<<"\n";
             cout<<"Your login is: "<<login<<endl;
+			system("cls");
             cout<<"Enter password: "<<endl;
             cin>>haslo;
             plik<<haslo<<"\n";
-			cout<<"YOur ID is: "<<i<<endl;
+			system("cls");
+			cout<<"Your ID is: "<<i<<endl;
+			cout<<endl;
             cout<<"Everything is ok!"<<endl;
+			cout<<endl;
 			
             liczbakont.close();
 
             cout<<"Registration was successful!"<<endl;
+			cout<<endl;
+			cout<<"Press enter to continue"<<endl;
+			system("Pause");
+			system("cls");
 }
         
 
 void logowanie()
 {
-	
+	system("cls");
 	string a;
 	fstream plik;
 	plik.open("liczbakont.txt", ios::out | ios::in);
@@ -91,29 +100,32 @@ void logowanie()
 									}
 				
 								cout<<"Enter your login: "<<endl;
-				
 								cin>>log;
+								cout<<endl;
 								if(log == a)
 								cout<<"Enter your password:  "<<endl;
 								else 
 									{ 
-										cout<<"Wrong login"<<endl;
+										cout<<"Wrong login. "<<endl;
 										system("pause");
-										exit(123);
+										return logowanie();
 									}
 				
 				
 								cin>>pass;
+								cout<<endl;
 								if(pass == b)
 								{
+								system("cls");
 								cout<<"Logged in to your account!"<<endl;
 								system("pause");
+								exit(123);
 								}
 								else 
 									{ 
 										cout<<"Wrong password!"<<endl;
 										system("pause");
-										exit(123); 
+										return logowanie();
 									}
 				
 								
@@ -122,7 +134,7 @@ void logowanie()
 						{
 							cout<<"Wrong ID!"<<endl;
 							system("pause");
-							exit(123);
+							return logowanie();
 		    			} 
 							plik.close();  		
 					}
@@ -136,13 +148,15 @@ void logowanie()
 
 int main()
 {
-	setlocale(LC_CTYPE, "Polish");
 	int n = 1;
-	cout<<"Welcome to Bank!"<<endl;
+	cout<<" ----------------"<<endl;
+	cout<<"|Welcome to Bank!|"<<endl;
+	cout<<" ----------------"<<endl;
 	do
 	{	
 	cout<<"1. Register."<<endl;
 	cout<<"2. Log in."<<endl;
+	cout<<"3. Exit."<<endl;
 	int w;
 	cin>>w;
 	switch(w)
@@ -152,15 +166,33 @@ int main()
 				rejestracja();
 				break;
 			}
-		
+			
 		case 2:
 			{
 				logowanie();
 				break;
-				
+					
 			}
-		
+
+		case 3:
+		{
+			system("pause");
+			exit(123);
+			break;
+		}
+
+		default:
+		{
+			cout<<"You chose the wrong option. The program will turn off"<<endl;
+			cout<<endl;
+			system("pause");
+			exit(123);
+			break;
+		}
+	
 	}
 	}
 	while(n > 0);
+	
+	
 }
